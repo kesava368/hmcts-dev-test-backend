@@ -34,6 +34,7 @@ jobs:
             terraform:
               - 'infrastructure/**'
             app:
+              - '**'
               - '!infrastructure/**'
 
   # =========================================================================
@@ -151,7 +152,7 @@ jobs:
 
       # 1. Non-blocking warning scan for HIGH severity vulnerabilities
       - name: Trivy Scan - HIGH Vulnerabilities (Warning Only)
-        uses: aquasecurity/trivy-action@0.30.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: '${{ env.IMAGE_NAME }}:scan-target'
           format: 'table'
@@ -160,7 +161,7 @@ jobs:
 
       # 2. Hard-blocking gate for CRITICAL severity vulnerabilities
       - name: Trivy Scan - CRITICAL Vulnerabilities (Pipeline Block)
-        uses: aquasecurity/trivy-action@0.30.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: '${{ env.IMAGE_NAME }}:scan-target'
           format: 'table'
