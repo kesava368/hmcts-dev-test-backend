@@ -1,4 +1,4 @@
-project_name      = "hmcts"
+project_name      = "hmcts" #change later to service name
 environment       = "dev"
 location          = "northeurope"
 db_admin_username = "psqladmin"
